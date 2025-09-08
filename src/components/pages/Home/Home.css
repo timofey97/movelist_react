@@ -1,0 +1,152 @@
+/* CSS Custom Properties (Variables) */
+:root {
+  --maxPrimaryPageWidth: 1400px;
+  --imageBorderRadius: 8px;
+  --tmdbLightBlue: 1, 180, 228;
+  --tmdbDarkBlue: 3, 37, 65;
+  --discoverColumnPadding: 30px;
+  --lightGrey: 227, 227, 227;
+  --numberOfDiscoverColumns: 5;
+}
+
+/* Layout: Column Container */
+.white_column {
+  width: calc(100vw - 80px - 268px);
+  max-width: calc(var(--maxPrimaryPageWidth) - 80px - 268px);
+}
+
+@media (max-width: 768px) {
+  .white_column {
+    width: 100%;
+  }
+}
+
+/* Card Style */
+.card.style_1 {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  border: 1px solid rgba(var(--lightGrey), 1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .card.style_1 {
+    width: calc(
+      (
+          100vw - 80px - 260px -
+            (var(--discoverColumnPadding) * var(--numberOfDiscoverColumns))
+        ) /
+        var(--numberOfDiscoverColumns)
+    );
+    max-width: calc(
+      (
+          var(--maxPrimaryPageWidth) - 80px - 260px -
+            (var(--discoverColumnPadding) * var(--numberOfDiscoverColumns))
+        ) /
+        var(--numberOfDiscoverColumns)
+    );
+    flex-direction: column;
+    height: unset;
+  }
+}
+
+@media (max-width: 767px) {
+  .card.style_1 {
+    width: 100%;
+    flex-direction: row;
+    padding: 0;
+    margin-top: 15px;
+  }
+}
+
+.card.style_1.filler {
+  border: 0;
+  margin-top: 0;
+  height: 0;
+  box-shadow: none;
+}
+
+/* Responsive Discover Column Count */
+@media (max-width: 699px) {
+  :root {
+    --numberOfDiscoverColumns: 1;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 899px) {
+  :root {
+    --numberOfDiscoverColumns: 2;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1039px) {
+  :root {
+    --numberOfDiscoverColumns: 3;
+  }
+}
+
+@media (min-width: 1040px) and (max-width: 1239px) {
+  :root {
+    --numberOfDiscoverColumns: 4;
+  }
+}
+
+@media (min-width: 1240px) {
+  :root {
+    --numberOfDiscoverColumns: 5;
+  }
+}
+
+/* Pagination Styles */
+div.pagination {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  color: #000;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  max-width: 500px;
+  width: auto;
+}
+
+div.pagination.infinite {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 100%;
+  height: 50px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-radius: var(--imageBorderRadius);
+}
+
+/* Background Color Utilities */
+.background_color.light_blue {
+  background-color: rgba(var(--tmdbLightBlue), 1);
+}
+
+/* Loading animations */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.disabled {
+  cursor: not-allowed;
+  background-color: rgba(228, 228, 228, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
