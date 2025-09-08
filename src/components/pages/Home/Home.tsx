@@ -5,7 +5,7 @@ import { LoadingSpinner } from '../../atoms/LoadingSpinner/LoadingSpinner'
 import { Button } from '../../atoms/Button/Button'
 import { useGenres } from '../../../hooks/useGenres'
 import { useMoviesByGenres, usePopularMovies } from '../../../hooks/useMovies'
-import type { Movie, MoviePage } from '../../../types/movie'
+import type { MoviePage } from '../../../types/movie'
 import './Home.css'
 
 export const Home: React.FC = () => {
@@ -101,11 +101,6 @@ export const Home: React.FC = () => {
     }
   }
 
-  const handleGenreChange = (genreList: Array<number>) => {
-    // Жанры изменились, но НЕ начинаем поиск сразу
-    // Поиск начинается только при нажатии кнопки Search
-  }
-
   const handleSearch = (genreList: Array<number>) => {
     if (genreList.length === 0) return
 
@@ -148,7 +143,6 @@ export const Home: React.FC = () => {
             <FilterSidebar
               genres={genres}
               selectedGenres={selectedGenres}
-              onGenreChange={handleGenreChange}
               onSearch={handleSearch}
               isLoading={isSearchLoading}
             />

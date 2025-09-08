@@ -1,8 +1,7 @@
-import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
+import { vi } from 'vitest'
 import { MovieCard } from './MovieCard'
 import type { Movie } from '../../../types/movie'
-import { vi } from 'vitest'
 
 const mockMovie: Movie = {
   id: 1,

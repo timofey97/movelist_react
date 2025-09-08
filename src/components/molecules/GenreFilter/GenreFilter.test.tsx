@@ -1,8 +1,7 @@
-import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
+import { vi } from 'vitest'
 import { GenreFilter } from './GenreFilter'
 import type { Genre } from '../../../types/genre'
-import { vi } from 'vitest'
 
 const mockGenres: Array<Genre> = [
   { id: 28, name: 'Action' },

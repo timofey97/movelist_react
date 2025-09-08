@@ -1,13 +1,13 @@
-import { movieService } from '../movie.service'
-import type { Movie } from '../../types/movie'
 import { vi } from 'vitest'
+
+import { movieService } from '../movie.service'
 
 // Mock fetch
 global.fetch = vi.fn() as unknown as typeof fetch
 
 describe('MovieService', () => {
   beforeEach(() => {
-    ;(fetch as unknown as ReturnType<typeof vi.fn>).mockClear?.()
+    ;(fetch as unknown as ReturnType<typeof vi.fn>).mockClear()
   })
 
   describe('getPopularMovies', () => {
@@ -33,7 +33,8 @@ describe('MovieService', () => {
       const result = await movieService.getPopularMovies(1)
 
       expect(fetch).toHaveBeenCalledTimes(1)
-      const calledUrl = (fetch as unknown as ReturnType<typeof vi.fn>).mock.calls[0][0] as string
+      const calledUrl = (fetch as unknown as ReturnType<typeof vi.fn>).mock
+        .calls[0][0] as string
       expect(calledUrl).toMatch(
         /^https:\/\/api\.themoviedb\.org\/3\/movie\/popular\?api_key=.+&page=1$/,
       )
@@ -100,7 +101,7 @@ describe('MovieService', () => {
         ],
       }
 
-      ;(fetch as jest.Mock).mockResolvedValueOnce({
+      ;(fetch as unknown as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
         ok: true,
         json: async () => mockResponse,
       })
@@ -108,7 +109,8 @@ describe('MovieService', () => {
       const result = await movieService.searchMoviesByGenres([28, 35], 1)
 
       expect(fetch).toHaveBeenCalledTimes(1)
-      const calledUrl2 = (fetch as unknown as ReturnType<typeof vi.fn>).mock.calls[0][0] as string
+      const calledUrl2 = (fetch as unknown as ReturnType<typeof vi.fn>).mock
+        .calls[0][0] as string
       expect(calledUrl2).toMatch(
         /^https:\/\/api\.themoviedb\.org\/3\/discover\/movie\?api_key=.+&with_genres=28,35&sort_by=popularity\.desc&page=1$/,
       )

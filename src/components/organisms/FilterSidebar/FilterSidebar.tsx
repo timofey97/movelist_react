@@ -6,7 +6,6 @@ import type { Genre } from '../../../types/genre'
 interface FilterSidebarProps {
   genres: Array<Genre>
   selectedGenres: Array<number>
-  onGenreChange: (genres: Array<number>) => void
   onSearch: (genres: Array<number>) => void
   isLoading?: boolean
 }
@@ -14,7 +13,6 @@ interface FilterSidebarProps {
 export const FilterSidebar: React.FC<FilterSidebarProps> = ({
   genres,
   selectedGenres,
-  onGenreChange,
   onSearch,
   isLoading = false,
 }) => {
@@ -28,7 +26,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
 
   const handleGenreChange = (genreList: Array<number>) => {
     setLocalSelectedGenres(genreList)
-    // НЕ вызываем onGenreChange сразу - только когда нажимают Search
+    // Do not call parent callback immediately; only trigger search on button click
   }
 
   const handleSearch = () => {

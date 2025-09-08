@@ -5,7 +5,7 @@ A React movie discovery app built with TanStack stack. Browse popular movies and
 ## Tech Stack
 
 - React 19 + TypeScript
-- TanStack Query/Router/Store  
+- TanStack Query/Router/Store
 - Tailwind CSS
 - Vite
 
@@ -18,5 +18,5 @@ A React movie discovery app built with TanStack stack. Browse popular movies and
 ## Scripts
 
 - `npm run dev` - Development server
-- `npm run build` - Production build  
+- `npm run build` - Production build
 - `npm run test` - Run tests
