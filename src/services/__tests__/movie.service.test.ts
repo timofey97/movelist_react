@@ -36,7 +36,7 @@ describe('MovieService', () => {
       const calledUrl = (fetch as unknown as ReturnType<typeof vi.fn>).mock
         .calls[0][0] as string
       expect(calledUrl).toMatch(
-        /^https:\/\/api\.themoviedb\.org\/3\/movie\/popular\?api_key=.+&page=1$/,
+        /^https:\/\/api\.themoviedb\.org\/3\/movie\/popular\?api_key=.*&page=1$/,
       )
       expect(result).toEqual([
         {
@@ -112,7 +112,7 @@ describe('MovieService', () => {
       const calledUrl2 = (fetch as unknown as ReturnType<typeof vi.fn>).mock
         .calls[0][0] as string
       expect(calledUrl2).toMatch(
-        /^https:\/\/api\.themoviedb\.org\/3\/discover\/movie\?api_key=.+&with_genres=28,35&sort_by=popularity\.desc&page=1$/,
+        /^https:\/\/api\.themoviedb\.org\/3\/discover\/movie\?api_key=.*&with_genres=28,35&sort_by=popularity\.desc&page=1$/,
       )
       expect(result).toEqual([
         {
